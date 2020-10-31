@@ -1,4 +1,4 @@
-package com.davidups.skell.core.di
+package com.davidups.starwars.core.di
 
 import org.koin.dsl.module
 

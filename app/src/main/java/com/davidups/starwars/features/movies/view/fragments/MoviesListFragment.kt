@@ -3,8 +3,8 @@ package com.davidups.starwars.features.movies.view.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import com.davidups.skell.R
-import com.davidups.skell.databinding.FragmentMoviesBinding
+import com.davidups.starwars.R
+import com.davidups.starwars.databinding.FragmentMoviesBinding
 import com.davidups.starwars.core.extensions.failure
 import com.davidups.starwars.core.extensions.observe
 import com.davidups.starwars.core.extensions.showInfoAlertDialog
@@ -20,7 +20,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies) {
 
     private val binding by viewBinding(FragmentMoviesBinding::bind)
 
-    private val moviesViewModel: MoviesViewModel by
+    private val moviesViewModel: MoviesViewModel by inject()
     private val movieAdapter: MovieAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {

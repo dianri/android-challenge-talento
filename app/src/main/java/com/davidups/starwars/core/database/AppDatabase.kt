@@ -1,4 +1,4 @@
-package com.davidups.skell.core.database
+package com.davidups.starwars.core.database
 
 /*
 @Database(entities = [], version = 2)

@@ -1,4 +1,4 @@
-package com.davidups.skell.core.extensions
+package com.davidups.starwars.core.extensions
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable

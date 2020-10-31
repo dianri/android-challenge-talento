@@ -3,9 +3,9 @@ package com.davidups.starwars.features.movies.view.adapters
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.davidups.skell.R
-import com.davidups.skell.core.extensions.inflate
-import com.davidups.skell.core.extensions.loadFromUrl
+import com.davidups.starwars.R
+import com.davidups.starwars.core.extensions.inflate
+import com.davidups.starwars.core.extensions.loadFromUrl
 import com.davidups.starwars.core.extensions.randomImage
 import com.davidups.starwars.features.movies.models.view.MovieView
 import kotlin.properties.Delegates

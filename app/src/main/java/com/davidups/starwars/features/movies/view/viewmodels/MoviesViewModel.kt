@@ -2,8 +2,8 @@ package com.davidups.starwars.features.movies.view.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.davidups.skell.core.extensions.cancelIfActive
-import com.davidups.skell.core.interactor.UseCase
+import com.davidups.starwars.core.extensions.cancelIfActive
+import com.davidups.starwars.core.interactor.UseCase
 import com.davidups.starwars.core.functional.Error
 import com.davidups.starwars.core.functional.Success
 import com.davidups.starwars.core.platform.BaseViewModel

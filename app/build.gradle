@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 subprojects {
@@ -38,7 +37,7 @@ android {
         Production {
             dimension "enviroment"
             buildConfigField "String", "ENVIRONMENT", "\"PRO\""
-            buildConfigField "String", "ENVIRONMENT_URL", "\"https://swapi.co/api/\""
+            buildConfigField "String", "ENVIRONMENT_URL", "\"https://swapi.dev/api/\""
             buildConfigField "String", "IMAGE_MEME_URL", "\"https://www.dailydot.com/wp-content/uploads/2018/07/yoda-star-wars-meme.jpg\""
         }
     }

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.davidups.skell.R
+import com.davidups.starwars.R
 import kotlinx.android.synthetic.main.navigation_activity.*
 
 class MainActivity : AppCompatActivity() {

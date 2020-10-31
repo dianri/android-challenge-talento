@@ -1,11 +1,11 @@
-package com.davidups.skell.core.utils
+package com.davidups.starwars.core.utils
 
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import com.davidups.skell.R
-import com.davidups.skell.core.platform.BaseAlertDialog
+import com.davidups.starwars.R
+import com.davidups.starwars.core.platform.BaseAlertDialog
 import kotlinx.android.synthetic.main.info_alert_dialog.view.*
 
 class InfoAlertDialog(context: Context) : BaseAlertDialog() {

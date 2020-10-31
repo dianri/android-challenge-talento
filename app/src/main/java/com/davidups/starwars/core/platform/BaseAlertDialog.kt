@@ -1,4 +1,4 @@
-package com.davidups.skell.core.platform
+package com.davidups.starwars.core.platform
 
 import android.app.AlertDialog
 import android.graphics.Color
