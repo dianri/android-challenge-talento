@@ -2,6 +2,8 @@ package com.davidups.starwars.features.movies.view.adapters
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.davidups.starwars.R
 import com.davidups.starwars.core.extensions.inflate
@@ -17,7 +19,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    internal var clickListener: (MovieView) -> Unit = { }
+    internal var clickListener: (MovieView, View) -> Unit = { movieView: MovieView, view1: View ->
+        val bundle = bundleOf("episodeInfo" to movieView)
+        view1.findNavController().navigate(R.id.detail_movie, bundle)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(R.layout.item_person_row))
@@ -30,11 +35,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(movie: MovieView, clickListener: (MovieView) -> Unit) {
+        fun bind(movie: MovieView, clickListener: (MovieView, View) -> Unit) {
             itemView.ivBanner.loadFromUrl(String.randomImage())
             itemView.tvName.text = movie.title
             itemView.cvPerson.setOnClickListener {
-                clickListener(movie)
+                clickListener(movie, it)
             }
         }
     }

@@ -2,6 +2,7 @@ package com.davidups.starwars.core.navigation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,10 +23,7 @@ class MainActivity : AppCompatActivity() {
         setupWithNavController(bottom_nav, navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            toolbar.title = when (destination.id) {
-                R.id.movies -> destination.label
-                else -> ""
-            }
+            toolbar.title = destination.label
 
             bottom_nav.visibility = when (destination.id) {
                 else -> View.VISIBLE
