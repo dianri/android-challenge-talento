@@ -3,12 +3,16 @@ package com.davidups.starwars.features.planets.models.data
 import com.davidups.starwars.features.planets.models.view.PlanetView
 
 data class Planet(
-    val title: String?,
-    val episodeId: Int?,
-    val openingCrawl: String?,
-    val producer: String?,
-    val releaseDate: String?
+    val name: String?,
+    val rotationPeriod: Int?,
+    val orbitalPeriod: Int?,
+    val diameter: Int?,
+    val climate: String?,
+    val gravity: String?,
+    val terrain: String?,
+    val population: String?
+
 ) {
 
-    fun toMovieView() = PlanetView(title, episodeId, openingCrawl, producer, releaseDate)
+    fun toPlanetView() = PlanetView(name, rotationPeriod, orbitalPeriod, diameter, climate, gravity, terrain, population)
 }

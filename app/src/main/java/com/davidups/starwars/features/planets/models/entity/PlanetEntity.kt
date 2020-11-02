@@ -5,16 +5,21 @@ import com.davidups.starwars.features.planets.models.data.Planet
 
 data class PlanetEntity(
     val name: String?,
-    val episode_id: Int?,
-    val opening_crawl: String?,
-    val producer: String?,
-    val release_date: String?
+    val rotation_period: Int?,
+    val orbital_period: Int?,
+    val diameter: Int?,
+    val climate: String?,
+    val gravity: String?,
+    val terrain: String?,
+    val population: String?
+
+
 ) {
 
     companion object {
         fun empty() =
-            PlanetEntity(String.empty(), Int.empty(), String.empty(), String.empty(), String.empty())
+            PlanetEntity(String.empty(), Int.empty(), Int.empty(), Int.empty(), String.empty(), String.empty(), String.empty(), String.empty())
     }
 
-    fun toMovie() = Planet(name, episode_id, opening_crawl, producer, release_date)
+    fun toPlanet() = Planet(name, rotation_period, orbital_period, diameter, climate, gravity, terrain, population)
 }

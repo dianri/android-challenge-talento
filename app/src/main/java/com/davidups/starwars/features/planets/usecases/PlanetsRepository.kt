@@ -13,24 +13,24 @@ import kotlinx.coroutines.flow.flowOn
 
 interface PlanetsRepository {
 
-    fun movies(): Flow<State<PlanetsView>>
+    fun planets(): Flow<State<PlanetsView>>
 
     class Network(
         private val ioDispatcher: CoroutineDispatcher,
         private val service: PlanetsService
     ) : PlanetsRepository {
 
-        override fun movies() =
+        override fun planets() =
             flow {
-                emit(getMoviesFromApi())
+                emit(getPlanetsFromApi())
             }
                 .catch { emit(Error(Throwable("s"))) }
                 .flowOn(ioDispatcher)
 
-        private suspend fun getMoviesFromApi() = service.getMovies()
+        private suspend fun getPlanetsFromApi() = service.getPlanets()
             .run {
                 if (isSuccessful && body() != null) {
-                    Success(body()!!.toMovies().toMoviesView())
+                    Success(body()!!.toPlanets().toPlanetsView())
                 } else {
                     Error(Throwable("s"))
                 }

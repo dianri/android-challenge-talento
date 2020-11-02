@@ -13,5 +13,5 @@ data class PlanetsEntity(
         fun empty() = PlanetsEntity(Int.empty(), String.empty(), String.empty(), mutableListOf())
     }
 
-    fun toMovies() = Planets(count, next, previus, results?.map { it.toMovie() }?.toMutableList())
+    fun toPlanets() = Planets(count, next, previus, results?.map { it.toPlanet() }?.toMutableList())
 }

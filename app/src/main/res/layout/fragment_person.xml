@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/gl3h"/>
 
     <TextView
-        android:id="@+id/tvReleaseDate"
+        android:id="@+id/tvDiameter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -36,22 +36,22 @@
         app:layout_constraintTop_toBottomOf="@id/tvName"/>
 
     <TextView
-        android:id="@+id/tvOpeningCrawl"
+        android:id="@+id/tvPopulation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"/>
+        app:layout_constraintTop_toBottomOf="@id/tvDiameter"/>
     
     <TextView
-        android:id="@+id/tvProducer"
+        android:id="@+id/tvClimate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/tvOpeningCrawl"/>
+        app:layout_constraintTop_toBottomOf="@id/tvPopulation"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl3h"

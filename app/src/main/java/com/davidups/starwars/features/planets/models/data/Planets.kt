@@ -9,6 +9,6 @@ data class Planets(
     val results: MutableList<Planet>?
 ) {
 
-    fun toMoviesView() =
-        PlanetsView(count, next, previous, results?.map { it.toMovieView() }?.toMutableList())
+    fun toPlanetsView() =
+        PlanetsView(count, next, previous, results?.map { it.toPlanetView() }?.toMutableList())
 }

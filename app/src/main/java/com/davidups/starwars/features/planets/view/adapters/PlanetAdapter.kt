@@ -22,8 +22,8 @@ class PlanetAdapter : RecyclerView.Adapter<PlanetAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    internal var clickListener: (PlanetView, View) -> Unit = { movieView: PlanetView, view1: View ->
-        val bundle = bundleOf("episodeInfo" to movieView)
+    internal var clickListener: (PlanetView, View) -> Unit = { planetView: PlanetView, view1: View ->
+        val bundle = bundleOf("episodeInfo" to planetView)
         view1.findNavController().navigate(R.id.detail_planets, bundle)
     }
 
@@ -39,27 +39,27 @@ class PlanetAdapter : RecyclerView.Adapter<PlanetAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var sharedPreference: SharedPreferences? = null
 
-        fun bind(movie: PlanetView, clickListener: (PlanetView, View) -> Unit) {
+        fun bind(planet: PlanetView, clickListener: (PlanetView, View) -> Unit) {
             itemView.ivBanner.loadFromUrl(String.randomImage())
-            itemView.tvName.text = movie.title
+            itemView.tvName.text = planet.name
             itemView.cvPerson.setOnClickListener {
-                clickListener(movie, it)
+                clickListener(planet, it)
             }
             itemView.ivFavorite.setOnClickListener {
                 getSahrePreferences(itemView.context)
-                if (movie.favourite) {
+                if (planet.favourite) {
                     itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_deselected))
-                    sharedPreferenceRemove(movie.title.toString())
-                    movie.favourite = false
+                    sharedPreferenceRemove(planet.name.toString())
+                    planet.favourite = false
                 } else {
                     itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_selected))
-                    sharedPreferenceInsert(movie.title.toString(), movie.title.toString())
-                    movie.favourite = true
+                    sharedPreferenceInsert(planet.name.toString(), planet.name.toString())
+                    planet.favourite = true
                 }
 
             }
 
-            if (movie.favourite) {
+            if (planet.favourite) {
                 itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_selected))
             }
         }

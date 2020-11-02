@@ -9,7 +9,6 @@ import com.davidups.starwars.core.interactor.UseCase
 import com.davidups.starwars.core.functional.Error
 import com.davidups.starwars.core.functional.Success
 import com.davidups.starwars.core.platform.BaseViewModel
-import com.davidups.starwars.features.movies.models.view.MovieView
 import com.davidups.starwars.features.movies.models.view.MoviesView
 import com.davidups.starwars.features.movies.usecases.GetMovies
 import kotlinx.coroutines.Job
@@ -24,8 +23,8 @@ class MoviesViewModel(
 ) : BaseViewModel() {
 
     var movies = MutableLiveData<MoviesView>()
-    var getMoviesJob: Job? = null
-    var sharedPreference: SharedPreferences? = null
+    private var getMoviesJob: Job? = null
+    private var sharedPreference: SharedPreferences? = null
 
     fun getMovies() {
         getMoviesJob.cancelIfActive()
@@ -46,21 +45,22 @@ class MoviesViewModel(
         }
     }
 
-    private fun getFavourites(movies: MoviesView) : MoviesView{
+    private fun getFavourites(movies: MoviesView): MoviesView {
         if (movies.results != null) {
             for (movie in movies.results) {
-                if (movie.episodeId.toString() == getValueString(movie.episodeId.toString())) {
+                if (movie.episodeId.toString() == getFavourite(movie.episodeId.toString())) {
                     movie.favourite = true
                 }
             }
         }
         return movies
     }
-    fun getSahrePreferences(context: Context){
+
+    fun getSharePreferences(context: Context) {
         sharedPreference = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
     }
 
-    fun getValueString(KEY_NAME: String): String? {
+    private fun getFavourite(KEY_NAME: String): String? {
         return sharedPreference?.getString(KEY_NAME, null)
     }
 }

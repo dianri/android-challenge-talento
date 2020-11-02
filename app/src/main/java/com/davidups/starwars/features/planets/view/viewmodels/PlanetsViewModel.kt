@@ -19,24 +19,24 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class PlanetsViewModel(
-    private val getMovies: GetPlanets
+    private val getPlanets: GetPlanets
 ) : BaseViewModel() {
 
-    var movies = MutableLiveData<PlanetsView>()
-    var getMoviesJob: Job? = null
+    var planets = MutableLiveData<PlanetsView>()
+    private var getPlanetsJob: Job? = null
     var sharedPreference: SharedPreferences? = null
 
-    fun getMovies() {
-        getMoviesJob.cancelIfActive()
-        getMoviesJob = viewModelScope.launch {
-            getMovies(UseCase.None())
+    fun getPlanets() {
+        getPlanetsJob.cancelIfActive()
+        getPlanetsJob = viewModelScope.launch {
+            getPlanets(UseCase.None())
                 .onStart { handleShowSpinner(true) }
                 .onEach { handleShowSpinner(false) }
                 .catch { failure -> handleFailure(failure) }
                 .collect { result ->
                     when (result) {
                         is Success<PlanetsView> -> {
-                            movies.value = getFavourites(result.data)
+                            planets.value = getFavourites(result.data)
                         }
                         is Error -> {
                         }
@@ -45,21 +45,22 @@ class PlanetsViewModel(
         }
     }
 
-    private fun getFavourites(movies: PlanetsView) : PlanetsView{
-        if (movies.results != null) {
-            for (movie in movies.results) {
-                if (movie.title.toString() == getValueString(movie.title.toString())) {
-                    movie.favourite = true
+    private fun getFavourites(planets: PlanetsView): PlanetsView {
+        if (planets.results != null) {
+            for (planet in planets.results) {
+                if (planet.name.toString() == getFavourite(planet.name.toString())) {
+                    planet.favourite = true
                 }
             }
         }
-        return movies
+        return planets
     }
-    fun getSahrePreferences(context: Context){
+
+    fun getSharePreferences(context: Context) {
         sharedPreference = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
     }
 
-    fun getValueString(KEY_NAME: String): String? {
+    private fun getFavourite(KEY_NAME: String): String? {
         return sharedPreference?.getString(KEY_NAME, null)
     }
 }

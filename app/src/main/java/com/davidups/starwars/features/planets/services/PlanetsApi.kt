@@ -11,5 +11,5 @@ internal interface PlanetsApi {
     }
 
     @GET(PLANET)
-    suspend fun getMovies(): Response<PlanetsEntity>
+    suspend fun getPlanets(): Response<PlanetsEntity>
 }

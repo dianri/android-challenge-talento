@@ -28,7 +28,7 @@ class PlanetsListFragment : BaseFragment(R.layout.fragment_movies) {
 
         with(planetsViewModel) {
             observe(showSpinner, ::handleShowSpinner)
-            observe(movies, ::handleMovies)
+            observe(planets, ::handleMovies)
             failure(failure, ::handleFailure)
         }
     }
@@ -42,8 +42,8 @@ class PlanetsListFragment : BaseFragment(R.layout.fragment_movies) {
     }
 
     private fun initView() {
-        planetsViewModel.getMovies()
-        planetsViewModel.getSahrePreferences(requireActivity())
+        planetsViewModel.getPlanets()
+        planetsViewModel.getSharePreferences(requireActivity())
         binding.rvMovies.apply {
             layoutManager = GridLayoutManager(requireActivity(), 2)
             adapter = planetAdapter
