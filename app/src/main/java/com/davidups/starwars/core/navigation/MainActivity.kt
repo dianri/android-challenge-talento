@@ -1,5 +1,6 @@
 package com.davidups.starwars.core.navigation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_activity)
-
         setSupportActionBar(toolbar)
         val navController = findNavController(R.id.fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)

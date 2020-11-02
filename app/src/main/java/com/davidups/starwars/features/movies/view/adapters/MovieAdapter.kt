@@ -1,5 +1,7 @@
 package com.davidups.starwars.features.movies.view.adapters
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -14,6 +16,7 @@ import kotlin.properties.Delegates
 import kotlinx.android.synthetic.main.item_person_row.view.*
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+
 
     internal var collection: List<MovieView> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
@@ -34,6 +37,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     override fun getItemCount() = collection.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var sharedPreference: SharedPreferences? = null
 
         fun bind(movie: MovieView, clickListener: (MovieView, View) -> Unit) {
             itemView.ivBanner.loadFromUrl(String.randomImage())
@@ -41,6 +45,44 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             itemView.cvPerson.setOnClickListener {
                 clickListener(movie, it)
             }
+            itemView.ivFavorite.setOnClickListener {
+                getSahrePreferences(itemView.context)
+                if (movie.favourite) {
+                    itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_deselected))
+                    sharedPreferenceRemove(movie.episodeId.toString())
+                    movie.favourite = false
+                } else {
+                    itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_selected))
+                    sharedPreferenceInsert(movie.episodeId.toString(), movie.episodeId.toString())
+                    movie.favourite = true
+                }
+
+            }
+
+            if (movie.favourite) {
+                itemView.ivFavorite.setImageDrawable(itemView.resources.getDrawable(R.drawable.ic_star_selected))
+            }
+        }
+
+        private fun getSahrePreferences(context: Context) {
+            sharedPreference = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        }
+
+        private fun sharedPreferenceInsert(name: String, value: String) {
+            val editor = sharedPreference?.edit()
+            editor.let {
+                editor?.putString(name, value)
+                editor?.commit()
+            }
+        }
+
+        private fun sharedPreferenceRemove(name: String) {
+            val editor = sharedPreference?.edit()
+            editor.let {
+                editor?.remove(name)
+                editor?.commit()
+            }
         }
     }
+
 }

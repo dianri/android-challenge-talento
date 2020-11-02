@@ -9,11 +9,12 @@ data class MovieView(
     val episodeId: Int?,
     val openingCrawl: String?,
     val producer: String?,
-    val releaseDate: String?
+    val releaseDate: String?,
+    var favourite: Boolean = false
 ) : Serializable {
 
     companion object {
         fun empty() =
-            MovieView(String.empty(), Int.empty(), String.empty(), String.empty(), String.empty())
+            MovieView(String.empty(), Int.empty(), String.empty(), String.empty(), String.empty(), false)
     }
 }

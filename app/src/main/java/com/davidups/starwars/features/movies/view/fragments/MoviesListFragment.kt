@@ -1,15 +1,18 @@
 package com.davidups.starwars.features.movies.view.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.davidups.starwars.R
-import com.davidups.starwars.databinding.FragmentMoviesBinding
 import com.davidups.starwars.core.extensions.failure
 import com.davidups.starwars.core.extensions.observe
 import com.davidups.starwars.core.extensions.showInfoAlertDialog
 import com.davidups.starwars.core.platform.BaseFragment
 import com.davidups.starwars.core.platform.viewBinding.viewBinding
+import com.davidups.starwars.databinding.FragmentMoviesBinding
+import com.davidups.starwars.features.movies.models.view.MovieView
 import com.davidups.starwars.features.movies.models.view.MoviesView
 import com.davidups.starwars.features.movies.view.adapters.MovieAdapter
 import com.davidups.starwars.features.movies.view.viewmodels.MoviesViewModel
@@ -38,11 +41,12 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies) {
 
         initView()
         initListeners()
+
     }
 
     private fun initView() {
         moviesViewModel.getMovies()
-
+        moviesViewModel.getSahrePreferences(requireActivity())
         binding.rvMovies.apply {
             layoutManager = GridLayoutManager(requireActivity(), 2)
             adapter = movieAdapter
@@ -56,7 +60,6 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies) {
             movieAdapter.collection = movies.results.orEmpty()
         }
     }
-
     private fun handleShowSpinner(show: Boolean?) {
         showSpinner(show ?: false)
     }
