@@ -6,6 +6,7 @@ import com.davidups.starwars.BuildConfig
 import com.davidups.starwars.core.platform.ContextHandler
 import com.davidups.starwars.core.platform.NetworkHandler
 import com.davidups.starwars.features.movies.view.adapters.MovieAdapter
+import com.davidups.starwars.features.planets.view.adapters.PlanetAdapter
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -45,6 +46,7 @@ val applicationModule = module(override = true) {
     }
 
     factory { MovieAdapter() }
+    factory { PlanetAdapter() }
 }
 
 private fun createClient(): OkHttpClient {

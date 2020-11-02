@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/planets"
-        android:name="com.davidups.starwars.features.planets.views.fragments.PlanetsListFragment"
+        android:name="com.davidups.starwars.features.planets.view.fragments.PlanetsListFragment"
         android:label="Planets"
         tools:layout="@layout/fragment_planets" />
 
@@ -21,6 +21,12 @@
         android:id="@+id/detail_movie"
         android:name="com.davidups.starwars.features.movies.view.fragments.MovieDetailFragment"
         android:label="Movie Detail"
+        tools:layout="@layout/fragment_detail_movie" />
+
+    <fragment
+        android:id="@+id/detail_planets"
+        android:name="com.davidups.starwars.features.planets.view.fragments.PlanetDetailFragment"
+        android:label="Planet Detail"
         tools:layout="@layout/fragment_detail_movie" />
 
 </navigation>
